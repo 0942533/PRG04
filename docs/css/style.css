@@ -1,0 +1,18 @@
+body {
+    background-color: blue;
+    margin:0px; padding:0px;
+}
+
+body * {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
+
+fish {
+    background-image: url(../images/fishey.png);
+    /* background-size:200px 125px; */
+    background-size: 150px;
+    width:150px; height:125px;
+}
