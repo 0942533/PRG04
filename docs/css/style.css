@@ -16,3 +16,16 @@ fish {
     background-size: 150px;
     width:150px; height:125px;
 }
+
+octopus {
+    background-image: url(../images/octopus-arm.png);
+    background-size: 200px;
+    width:200px; height:250px;
+}
+
+octopusdown {
+    background-image: url(../images/octopus-arm.png);
+    background-size: 200px;
+    width:200px; height:250px;
+}
+

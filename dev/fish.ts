@@ -1,25 +1,22 @@
 class Fish {
 
     private div: HTMLElement
+    
     private x: number
     private y: number
 
-    private downkey: number
     private upkey: number
 
-    private downSpeed: number = 0
-    private upSpeed: number = 0
+    public upSpeed: number = 0
 
     constructor() {
         this.div = document.createElement("fish")
         document.body.appendChild(this.div)
 
-        //Cijfers aanpassen!!
         this.upkey = 38
-        this.downkey = 40
 
-        this.x = 0
-        this.y = 200
+        this.x = 40
+        this.y = 400
 
         window.addEventListener("keydown", (e: KeyboardEvent) => this.onKeyDown(e))
         window.addEventListener("keyup", (e: KeyboardEvent) => this.onKeyUp(e))
@@ -32,10 +29,8 @@ class Fish {
     private onKeyDown(e: KeyboardEvent): void {
         switch (e.keyCode) {
             case this.upkey:
-                this.upSpeed = 5
-                break
-            case this.downkey:
-                this.downSpeed = 5
+                this.upSpeed = 8
+                // console.log("ik spring!")
                 break
         }
     }
@@ -43,18 +38,15 @@ class Fish {
     private onKeyUp(e: KeyboardEvent): void {
         switch (e.keyCode) {
             case this.upkey:
-                this.upSpeed = 0
-                break
-            case this.downkey:
-                this.downSpeed = 0
+                this.upSpeed = -8
                 break
         }
     }
 
     public update() {
-        let newY = this.y - this.upSpeed + this.downSpeed
+        let newY = this.y - this.upSpeed 
 
-        // check of de paddle binnen beeld blijft
+        // check of fishey binnen beeld blijft
         if (newY > 0 && newY + 100 < window.innerHeight) this.y = newY
 
         this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
