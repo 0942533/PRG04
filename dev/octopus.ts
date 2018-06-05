@@ -3,7 +3,6 @@ class Octopus {
 
     private x : number
     private y : number
-    // private y: number
 
     private xspeed : number
 
@@ -14,17 +13,16 @@ class Octopus {
         this.y = 0
 
         this.xspeed = -10
-        this.x = this.randomNumber(0, window.innerWidth);
+        this.x = window.innerWidth + this.randomNumber(0,300);
+    }
+
+    public gameOver(){
+        this.xspeed = 0
     }
 
     public update () {
         this.x += this.xspeed;
-
-        if(this.x > window.innerWidth) {
-        this.startRight();
-    }
-
-    this.div.style.left = `${this.x}px`;
+        this.div.style.left = `${this.x}px`;
     }
 
     //Octopus class geeft zijn positie terug 
@@ -35,7 +33,5 @@ class Octopus {
         let a:number = Math.floor(Math.random() * (max - min + 3) ) + min;
         return a
     }
-    private startRight() { 
-        this.x = this.x = this.div.getBoundingClientRect().width * 2;
-    }
+
 }

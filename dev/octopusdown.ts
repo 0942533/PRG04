@@ -13,17 +13,16 @@ class OctopusDown {
         this.y = 500
 
         this.xspeed = -10
-        this.x = this.randomNumber(0, window.innerWidth);
+        this.x = window.innerWidth + this.randomNumber(0,300);
+    }
+
+    public gameOver(){
+        this.xspeed = 0
     }
 
     public update () {
         this.x += this.xspeed;
         this.y
-
-        if(this.x > window.innerWidth) {
-            this.startRight();
-        }
-
         this.div.style.left = `${this.x}px`;
         this.div.style.top = `${this.y}px`;
     }
@@ -35,8 +34,5 @@ class OctopusDown {
     randomNumber(min:number, max:number) {
         let a:number = Math.floor(Math.random() * (max - min + 3) ) + min;
         return a
-    }
-    private startRight() { 
-        this.x = this.x = this.div.getBoundingClientRect().width * 2;
     }
 }

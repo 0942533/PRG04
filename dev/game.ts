@@ -5,6 +5,7 @@ class Game {
     private octopus:Octopus[] = [] 
     private octopusdown:OctopusDown[] = [] 
     private level:number = 0.008;
+    private paused:boolean=false;
 
     constructor(){
         this.fish = new Fish()
@@ -31,7 +32,9 @@ class Game {
             let hit = this.checkCollision(b.getRectangle(),this.fish.getRectangle())
             if (hit == true) {
                 console.log("game over!")
+                this.paused = true
                 this.fish.upSpeed = 0
+                b.gameOver()
             }
             b.update(); 
         }
@@ -41,11 +44,15 @@ class Game {
             let hit = this.checkCollision(c.getRectangle(),this.fish.getRectangle())
             if (hit == true) {
                 console.log("game over!")
+                this.paused = true
                 this.fish.upSpeed = 0
+               // c.gameOver()
             }
             c.update();
         }
-        requestAnimationFrame(()=>this.gameLoop()) //Hiermee roept hij zich 60x per seconde aan
+        if(!this.paused){
+            requestAnimationFrame(()=>this.gameLoop()) //Hiermee roept hij zich 60x per seconde aan
+        }
     }
 }
 

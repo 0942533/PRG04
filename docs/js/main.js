@@ -41,6 +41,7 @@ var Game = (function () {
         this.octopus = [];
         this.octopusdown = [];
         this.level = 0.008;
+        this.paused = false;
         this.fish = new Fish();
         console.log("ik ben een vis");
         this.gameLoop();
@@ -63,7 +64,9 @@ var Game = (function () {
             var hit = this.checkCollision(b.getRectangle(), this.fish.getRectangle());
             if (hit == true) {
                 console.log("game over!");
+                this.paused = true;
                 this.fish.upSpeed = 0;
+                b.gameOver();
             }
             b.update();
         }
@@ -73,11 +76,14 @@ var Game = (function () {
             var hit = this.checkCollision(c.getRectangle(), this.fish.getRectangle());
             if (hit == true) {
                 console.log("game over!");
+                this.paused = true;
                 this.fish.upSpeed = 0;
             }
             c.update();
         }
-        requestAnimationFrame(function () { return _this.gameLoop(); });
+        if (!this.paused) {
+            requestAnimationFrame(function () { return _this.gameLoop(); });
+        }
     };
     return Game;
 }());
@@ -88,13 +94,13 @@ var Octopus = (function () {
         document.body.appendChild(this.div);
         this.y = 0;
         this.xspeed = -10;
-        this.x = this.randomNumber(0, window.innerWidth);
+        this.x = window.innerWidth + this.randomNumber(0, 300);
     }
+    Octopus.prototype.gameOver = function () {
+        this.xspeed = 0;
+    };
     Octopus.prototype.update = function () {
         this.x += this.xspeed;
-        if (this.x > window.innerWidth) {
-            this.startRight();
-        }
         this.div.style.left = this.x + "px";
     };
     Octopus.prototype.getRectangle = function () {
@@ -104,9 +110,6 @@ var Octopus = (function () {
         var a = Math.floor(Math.random() * (max - min + 3)) + min;
         return a;
     };
-    Octopus.prototype.startRight = function () {
-        this.x = this.x = this.div.getBoundingClientRect().width * 2;
-    };
     return Octopus;
 }());
 var OctopusDown = (function () {
@@ -115,14 +118,14 @@ var OctopusDown = (function () {
         document.body.appendChild(this.div);
         this.y = 500;
         this.xspeed = -10;
-        this.x = this.randomNumber(0, window.innerWidth);
+        this.x = window.innerWidth + this.randomNumber(0, 300);
     }
+    OctopusDown.prototype.gameOver = function () {
+        this.xspeed = 0;
+    };
     OctopusDown.prototype.update = function () {
         this.x += this.xspeed;
         this.y;
-        if (this.x > window.innerWidth) {
-            this.startRight();
-        }
         this.div.style.left = this.x + "px";
         this.div.style.top = this.y + "px";
     };
@@ -132,9 +135,6 @@ var OctopusDown = (function () {
     OctopusDown.prototype.randomNumber = function (min, max) {
         var a = Math.floor(Math.random() * (max - min + 3)) + min;
         return a;
-    };
-    OctopusDown.prototype.startRight = function () {
-        this.x = this.x = this.div.getBoundingClientRect().width * 2;
     };
     return OctopusDown;
 }());
