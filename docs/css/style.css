@@ -102,13 +102,18 @@ fishey {
     background-size:contain;
     z-index: 6;
 }
-octopusbottom {
+octopusbottom, octopustop {
     position: absolute;
     display: block;
-    background-image: url(../img/octopusbottom.png);
     width: 220px; height: 270px;
     background-size:contain;
     z-index: 4;
+}
+octopusbottom {
+    background-image: url(../img/octopusbottom.png); 
+}
+octopustop {
+    background-image: url(../img/octopustop.png);
 }
 gameover {
     position: absolute;

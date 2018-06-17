@@ -120,6 +120,26 @@ var OctopusBottom = (function (_super) {
     };
     return OctopusBottom;
 }(GameObject));
+var OctopusTop = (function (_super) {
+    __extends(OctopusTop, _super);
+    function OctopusTop() {
+        var _this = _super.call(this, "octopustop", 1500, 40) || this;
+        _this.speedX = -8;
+        return _this;
+    }
+    OctopusTop.prototype.update = function () {
+        this.x += this.speedX;
+        if (this.x > window.innerWidth) {
+            this.startLeft();
+        }
+        this.div.style.left = this.x + "px";
+        this.div.style.top = this.y + "px";
+    };
+    OctopusTop.prototype.startLeft = function () {
+        this.x = this.x = this.div.getBoundingClientRect().width * -1;
+    };
+    return OctopusTop;
+}(GameObject));
 var Game = (function () {
     function Game() {
         this.screen = new StartScreen(this);
@@ -184,6 +204,7 @@ var PlayScreen = (function () {
         this.score = 0;
         this.change = 0.008;
         this.octopusbottom = [];
+        this.octopustop = [];
         this.game = g;
         var a = document.getElementsByTagName("foreground")[0];
         this.div = document.createElement("hud");
@@ -198,6 +219,9 @@ var PlayScreen = (function () {
         if (Math.random() < this.change) {
             this.octopusbottom.push(new OctopusBottom());
         }
+        if (Math.random() < this.change) {
+            this.octopustop.push(new OctopusTop());
+        }
         for (var _i = 0, _a = this.octopusbottom; _i < _a.length; _i++) {
             var b = _a[_i];
             var hit = this.checkCollision(this.fishey.getRectangle(), b.getRectangle());
@@ -206,6 +230,14 @@ var PlayScreen = (function () {
                 this.game.showGameOver(new GameOver(this.game));
             }
             b.update();
+        }
+        for (var _b = 0, _c = this.octopustop; _b < _c.length; _b++) {
+            var t = _c[_b];
+            if (this.checkCollision(this.fishey.getRectangle(), t.getRectangle())) {
+                this.game.emptyScreen();
+                this.game.showGameOver(new GameOver(this.game));
+            }
+            t.update();
         }
         this.fishey.update();
         this.backgroundgame.update();

@@ -8,6 +8,7 @@ class PlayScreen {
     private change: number = 0.008
 
     private octopusbottom: OctopusBottom[] = []
+    private octopustop: OctopusTop[] = []
 
     constructor(g: Game) {
         this.game = g
@@ -31,6 +32,9 @@ class PlayScreen {
         if (Math.random() < this.change) {
             this.octopusbottom.push(new OctopusBottom())
         }
+        if (Math.random() < this.change) {
+            this.octopustop.push(new OctopusTop())
+        }
 
         //Pushen van octopusbottom
         for (let b of this.octopusbottom) {
@@ -42,6 +46,16 @@ class PlayScreen {
               this.game.showGameOver(new GameOver(this.game))
             }
             b.update()
+        }
+
+        //Pushen van octopustop
+        for (let t of this.octopustop) {
+            //Fishey octopustop geraakt? -> screen wordt leeg gemaakt en gameoverscreen wordt getoond
+            if (this.checkCollision(this.fishey.getRectangle(),t.getRectangle())) {
+                this.game.emptyScreen();
+                this.game.showGameOver(new GameOver(this.game));
+            }
+            t.update();
         }
 
         this.fishey.update()
