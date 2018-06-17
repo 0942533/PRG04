@@ -9,6 +9,34 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var BackgroundGame = (function () {
+    function BackgroundGame() {
+        this.infiniteloop = new InfiniteLoop();
+    }
+    BackgroundGame.prototype.update = function () {
+        this.infiniteloop.update();
+    };
+    return BackgroundGame;
+}());
+var InfiniteLoop = (function () {
+    function InfiniteLoop() {
+        this.xSpeed = 4;
+        this.x = 30;
+        this.y = innerHeight;
+        var u = document.getElementsByTagName("foreground")[0];
+        this.div = document.createElement("infiniteloop");
+        u.appendChild(this.div);
+    }
+    InfiniteLoop.prototype.update = function () {
+        this.Loop();
+    };
+    InfiniteLoop.prototype.Loop = function () {
+        this.x -= this.xSpeed;
+        this.div.style.top = "translate(" + this.y + "px)";
+        this.div.style.backgroundPosition = this.x + "px 750px";
+    };
+    return InfiniteLoop;
+}());
 var GameObject = (function () {
     function GameObject(type, x, y) {
         this.x = x;
@@ -63,7 +91,11 @@ var Game = (function () {
 var PlayScreen = (function () {
     function PlayScreen(g) {
         this.game = g;
+        this.backgroundgame = new BackgroundGame();
     }
+    PlayScreen.prototype.update = function () {
+        this.backgroundgame.update();
+    };
     return PlayScreen;
 }());
 window.addEventListener("load", function () { return new Game(); });

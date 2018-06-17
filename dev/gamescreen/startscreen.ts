@@ -21,10 +21,10 @@ class StartScreen {
         var e = document.createElement("logo")
         a.appendChild(e)
 
-        var f = document.createElement("startbutton");
+        var f = document.createElement("startbutton")
         a.appendChild(f);
-        f.addEventListener("click", () => this.clicked());
-        f.innerHTML = "START";
+        f.addEventListener("click", () => this.clicked())
+        f.innerHTML = "START"
     }
 
     public update():void {
@@ -37,7 +37,7 @@ class StartScreen {
     private clicked() {
         //Elementen uit de voorgrond worden weggehaald
         this.game.emptyScreen()
-        this.game.showPlayScreen(new PlayScreen(this.game));
+        this.game.showPlayScreen(new PlayScreen(this.game))
     }
 
     private generateObject() {

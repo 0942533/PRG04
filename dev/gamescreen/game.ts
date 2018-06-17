@@ -11,13 +11,13 @@ class Game {
     //Update het gamescherm in de gameloop
     private gameLoop():void {
         this.screen.update()
-        requestAnimationFrame(() => this.gameLoop());
+        requestAnimationFrame(() => this.gameLoop())
     }
 
     //Verwijder de elementen uit de voorgrond
     public emptyScreen() {
-        let y = document.getElementsByTagName("foreground")[0];
-        y.innerHTML = "";
+        let y = document.getElementsByTagName("foreground")[0]
+        y.innerHTML = ""
     }
 
     //Laat het starscherm zien
