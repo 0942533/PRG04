@@ -24,6 +24,9 @@ class StartScreen {
         a.appendChild(f);
         f.addEventListener("click", () => this.clicked())
         f.innerHTML = "START"
+
+        var h = document.createElement("startsong");
+        b.appendChild(h);
     }
 
     public update():void {

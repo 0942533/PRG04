@@ -175,3 +175,13 @@ againbutton {
     padding: 10px;
     cursor: pointer;
 }
+
+startsong {
+    position: absolute;
+    display: block;
+    background-image: url(../img/music-button.png);
+    width: 110px; height: 112px;
+    top: 2%;
+    left:91%;
+    z-index: 8;
+}

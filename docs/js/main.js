@@ -315,7 +315,7 @@ var PlayScreen = (function () {
             }
             t.update();
         }
-        if (this.score == 2) {
+        if (this.score == 10) {
             this.game.emptyScreen();
             this.game.showGameWon(new GameWon(this.game));
         }
@@ -349,6 +349,8 @@ var StartScreen = (function () {
         a.appendChild(f);
         f.addEventListener("click", function () { return _this.clicked(); });
         f.innerHTML = "START";
+        var h = document.createElement("startsong");
+        b.appendChild(h);
     }
     StartScreen.prototype.update = function () {
         for (var _i = 0, _a = this.bubbles; _i < _a.length; _i++) {

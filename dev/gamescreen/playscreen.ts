@@ -74,7 +74,7 @@ class PlayScreen {
         }
 
         //Score gelijk aan 10? -> screen wordt leeggemaakt en gamewon scherm wordt getoond
-        if(this.score == 2) {
+        if(this.score == 10) {
             this.game.emptyScreen();
             this.game.showGameWon(new GameWon(this.game));
         }
