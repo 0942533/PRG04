@@ -21,7 +21,7 @@ background {
 
 caughtfish {
     position:fixed;
-    background-image: url(../img/catchedfish.png);
+    background-image: url(../img/caughtfish.png);
     width:290px; height:400px;
     background-size:contain;
     top:20%;
@@ -72,4 +72,33 @@ infiniteloop {
     width: 100%; height: 100%;
     margin-bottom:100px;
     z-index: 1;
+}
+hud {
+    position: absolute;
+    display: block;
+    background-image: url(../img/hud.png);
+    background-repeat: no-repeat;
+    width: 1536px; min-height: 80px;
+    background-size:contain;
+    top:0;
+    z-index: 7;
+}
+score {
+    position: absolute;
+    width: 20px; height: 45px;
+    font-size: 1.4em;
+    color: white;
+    line-height: 45px;
+    margin-top:10px;
+    left: 150px;
+    z-index: 8;
+}
+fishey {
+    position: absolute;
+    display: block;
+    background-image: url(../img/fishey.png);
+    background-repeat: no-repeat;
+    width: 110px; height: 95px;
+    background-size:contain;
+    z-index: 6;
 }

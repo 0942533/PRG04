@@ -4,7 +4,6 @@ class StartScreen {
 
     constructor(g:Game) {
         this.game = g
-        console.log("haaaii")
 
         let a = document.getElementsByTagName("foreground")[0]
         let b = document.getElementsByTagName("background")[0]

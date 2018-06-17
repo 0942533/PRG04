@@ -64,6 +64,13 @@ var Bubble = (function (_super) {
     };
     return Bubble;
 }(GameObject));
+var Fishey = (function (_super) {
+    __extends(Fishey, _super);
+    function Fishey() {
+        return _super.call(this, "fishey", 450, 450) || this;
+    }
+    return Fishey;
+}(GameObject));
 var Game = (function () {
     function Game() {
         this.screen = new StartScreen(this);
@@ -90,10 +97,19 @@ var Game = (function () {
 }());
 var PlayScreen = (function () {
     function PlayScreen(g) {
+        this.score = 0;
         this.game = g;
+        var a = document.getElementsByTagName("foreground")[0];
+        this.div = document.createElement("hud");
+        a.appendChild(this.div);
+        this.div = document.createElement("score");
+        a.appendChild(this.div);
+        this.div.innerHTML = "" + this.score;
+        this.fishey = new Fishey();
         this.backgroundgame = new BackgroundGame();
     }
     PlayScreen.prototype.update = function () {
+        this.fishey.update();
         this.backgroundgame.update();
     };
     return PlayScreen;
@@ -104,7 +120,6 @@ var StartScreen = (function () {
         var _this = this;
         this.bubbles = [];
         this.game = g;
-        console.log("haaaii");
         var a = document.getElementsByTagName("foreground")[0];
         var b = document.getElementsByTagName("background")[0];
         var c = document.createElement("background");

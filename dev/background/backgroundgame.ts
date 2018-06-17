@@ -1,12 +1,12 @@
 class BackgroundGame {
-    private infiniteloop: InfiniteLoop;
-  
-    constructor() {
-      this.infiniteloop = new InfiniteLoop();
-    }
-  
-    public update() {
-      this.infiniteloop.update();
-    }
+  private infiniteloop: InfiniteLoop;
+
+  constructor() {
+    this.infiniteloop = new InfiniteLoop();
   }
+
+  public update() {
+    this.infiniteloop.update();
+  }
+}
   
