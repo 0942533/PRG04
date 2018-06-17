@@ -70,8 +70,34 @@ var Bubble = (function (_super) {
 var Fishey = (function (_super) {
     __extends(Fishey, _super);
     function Fishey() {
-        return _super.call(this, "fishey", 450, 450) || this;
+        var _this = _super.call(this, "fishey", 450, 450) || this;
+        _this.upspeed = 0;
+        _this.upkey = 38;
+        window.addEventListener("keydown", function (e) { return _this.onKeyDown(e); });
+        window.addEventListener("keyup", function (e) { return _this.onKeyUp(e); });
+        _this.update();
+        return _this;
     }
+    Fishey.prototype.onKeyDown = function (e) {
+        switch (e.keyCode) {
+            case this.upkey:
+                this.upspeed = 8;
+                break;
+        }
+    };
+    Fishey.prototype.onKeyUp = function (e) {
+        switch (e.keyCode) {
+            case this.upkey:
+                this.upspeed = -7;
+                break;
+        }
+    };
+    Fishey.prototype.update = function () {
+        var newY = this.y - this.upspeed;
+        if (newY > 60 && newY + 75 < window.innerHeight)
+            this.y = newY;
+        this.div.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
+    };
     return Fishey;
 }(GameObject));
 var OctopusBottom = (function (_super) {
@@ -123,8 +149,34 @@ var Game = (function () {
     return Game;
 }());
 var GameOver = (function () {
-    function GameOver() {
+    function GameOver(g) {
+        var _this = this;
+        this.bubbles = [];
+        this.game = g;
+        var a = document.getElementsByTagName("foreground")[0];
+        this.generateObject();
+        var b = document.createElement("gameover");
+        a.appendChild(b);
+        var c = document.createElement("againbutton");
+        a.appendChild(c);
+        c.addEventListener("click", function () { return _this.clicked(); });
+        c.innerHTML = "GAME OVER! TRY AGAIN";
     }
+    GameOver.prototype.update = function () {
+        for (var _i = 0, _a = this.bubbles; _i < _a.length; _i++) {
+            var b = _a[_i];
+            b.update();
+        }
+    };
+    GameOver.prototype.generateObject = function () {
+        for (var i = 0; i < 20; i++) {
+            this.bubbles.push(new Bubble());
+        }
+    };
+    GameOver.prototype.clicked = function () {
+        this.game.emptyScreen();
+        this.game.showPlayScreen(new PlayScreen(this.game));
+    };
     return GameOver;
 }());
 var PlayScreen = (function () {

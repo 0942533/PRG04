@@ -11,7 +11,7 @@ class StartScreen {
         var c = document.createElement("background")
         b.appendChild(c)
 
-        //Roept de functie van het aanmaken vna de bubbels aan
+        //Roept de functie van het aanmaken van de bubbels aan
         this.generateObject()
 
         var d = document.createElement("caughtfish")

@@ -110,3 +110,29 @@ octopusbottom {
     background-size:contain;
     z-index: 4;
 }
+gameover {
+    position: absolute;
+    background-image:url(../img/game-over.png);
+    width: 260px; height: 220px;
+    background-size:contain;
+    box-sizing: border-box;
+    top: 15%;
+    left: 41.5%;
+    padding: 10px;
+    animation: fishanimation 3s ease-in-out infinite alternate;
+    z-index: 4;
+}
+againbutton {
+    position: fixed;
+    background-color:#0086cf;
+    border: 3px solid white;
+    border-radius:6px;
+    color: white;
+    width: 20%;
+    cursor: pointer;
+    text-align: center;
+    top: 45%;
+    left: 35%;
+    margin: 5%;
+    padding: 10px;  
+}
