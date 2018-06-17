@@ -1,0 +1,66 @@
+body {
+    margin:0px; padding:0px;
+    overflow:hidden;
+    font-family: "Press Start 2P", cursive;
+}
+
+body * {
+    display: block;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
+
+background {
+    position:absolute;
+    display:block;
+    background-image: url(../img/background-start.jpg);
+    width:1536px; height:750px;
+    background-size:contain;
+    top:0;
+}
+
+caughtfish {
+    position:fixed;
+    background-image: url(../img/catchedfish.png);
+    width:290px; height:400px;
+    background-size:contain;
+    top:20%;
+    left:81%;
+    animation: fishanimation 4s ease-in-out infinite alternate;
+}
+@keyframes fishanimation {
+    0% {
+      transform: translateY(20px);
+    }
+    
+    100% {
+      transform: translateY(60px);
+    }
+}
+logo {
+    position: fixed;
+    background-image: url(../img/logo.png);
+    width:30%; height:200px;
+    background-size:contain;
+    top:20%;
+    left:35%;
+}
+startbutton {
+    position: fixed;
+    background-color:#0086cf;
+    border: 3px solid white;
+    border-radius:6px;
+    width: 20%;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    top: 40%;
+    left: 35%;
+    margin: 5%;
+    cursor: pointer;
+}
+bubble{
+    background-image: url(../img/bubble.png);
+    width:30px; height:30px;
+    background-size:contain;
+}
