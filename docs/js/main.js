@@ -48,6 +48,9 @@ var GameObject = (function () {
     GameObject.prototype.update = function () {
         this.div.style.transform = "translate(" + this.x + "px, " + this.y + "px";
     };
+    GameObject.prototype.getRectangle = function () {
+        return this.div.getBoundingClientRect();
+    };
     return GameObject;
 }());
 var Bubble = (function (_super) {
@@ -71,6 +74,26 @@ var Fishey = (function (_super) {
     }
     return Fishey;
 }(GameObject));
+var OctopusBottom = (function (_super) {
+    __extends(OctopusBottom, _super);
+    function OctopusBottom() {
+        var _this = _super.call(this, "octopusbottom", 1500, 500) || this;
+        _this.speedX = -8;
+        return _this;
+    }
+    OctopusBottom.prototype.update = function () {
+        this.x += this.speedX;
+        if (this.x > window.innerWidth) {
+            this.startLeft();
+        }
+        this.div.style.left = this.x + "px";
+        this.div.style.top = this.y + "px";
+    };
+    OctopusBottom.prototype.startLeft = function () {
+        this.x = this.x = this.div.getBoundingClientRect().width * -1;
+    };
+    return OctopusBottom;
+}(GameObject));
 var Game = (function () {
     function Game() {
         this.screen = new StartScreen(this);
@@ -93,11 +116,22 @@ var Game = (function () {
         this.screen = screen;
         this.screen.update();
     };
+    Game.prototype.showGameOver = function (screen) {
+        this.screen = screen;
+        this.screen.update();
+    };
     return Game;
+}());
+var GameOver = (function () {
+    function GameOver() {
+    }
+    return GameOver;
 }());
 var PlayScreen = (function () {
     function PlayScreen(g) {
         this.score = 0;
+        this.change = 0.008;
+        this.octopusbottom = [];
         this.game = g;
         var a = document.getElementsByTagName("foreground")[0];
         this.div = document.createElement("hud");
@@ -109,8 +143,26 @@ var PlayScreen = (function () {
         this.backgroundgame = new BackgroundGame();
     }
     PlayScreen.prototype.update = function () {
+        if (Math.random() < this.change) {
+            this.octopusbottom.push(new OctopusBottom());
+        }
+        for (var _i = 0, _a = this.octopusbottom; _i < _a.length; _i++) {
+            var b = _a[_i];
+            var hit = this.checkCollision(this.fishey.getRectangle(), b.getRectangle());
+            if (hit) {
+                this.game.emptyScreen();
+                this.game.showGameOver(new GameOver(this.game));
+            }
+            b.update();
+        }
         this.fishey.update();
         this.backgroundgame.update();
+    };
+    PlayScreen.prototype.checkCollision = function (a, b) {
+        return (a.left <= b.right &&
+            b.left <= a.right &&
+            a.top <= b.bottom &&
+            b.top <= a.bottom);
     };
     return PlayScreen;
 }());

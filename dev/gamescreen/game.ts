@@ -31,4 +31,10 @@ class Game {
         this.screen = screen
         this.screen.update()
     }
+
+    //Laat het gameover scherm zien
+    public showGameOver (screen: GameOver) {
+        this.screen = screen
+        this.screen.update()
+    }
 }

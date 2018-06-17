@@ -102,3 +102,11 @@ fishey {
     background-size:contain;
     z-index: 6;
 }
+octopusbottom {
+    position: absolute;
+    display: block;
+    background-image: url(../img/octopusbottom.png);
+    width: 220px; height: 270px;
+    background-size:contain;
+    z-index: 4;
+}
