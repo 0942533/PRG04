@@ -37,4 +37,9 @@ class Game {
         this.screen = screen
         this.screen.update()
     }
+    //Laat het gamewon scherm zien
+    public showGameWon (screen: GameWon) {
+        this.screen = screen
+        this.screen.update()
+    }
 }

@@ -4,11 +4,13 @@ class PlayScreen {
     private div: HTMLElement
     private backgroundgame: BackgroundGame
     
+    private scoreElement: HTMLElement
     private score: number = 0
     private change: number = 0.008
 
     private octopusbottom: OctopusBottom[] = []
     private octopustop: OctopusTop[] = []
+    private star: Star[] = []
 
     constructor(g: Game) {
         this.game = g
@@ -20,9 +22,9 @@ class PlayScreen {
         a.appendChild(this.div)
 
         //Wordt een div "score" aangemaakt en in foreground geplaatst
-        this.div = document.createElement("score")
-        a.appendChild(this.div)
-        this.div.innerHTML = "" + this.score
+        this.scoreElement = document.createElement("score")
+        a.appendChild(this.scoreElement)
+        this.scoreElement.innerHTML = "" + this.score
 
         this.fishey = new Fishey()
         this.backgroundgame = new BackgroundGame()
@@ -30,12 +32,25 @@ class PlayScreen {
     public update():void {
         //Random getal kleiner dan 0.008? -> nieuwe octopusbottom wordt aangemaakt
         if (Math.random() < this.change) {
+            this.star.push(new Star())
+        }
+        if (Math.random() < this.change) {
             this.octopusbottom.push(new OctopusBottom())
         }
         if (Math.random() < this.change) {
             this.octopustop.push(new OctopusTop())
         }
 
+        //Pushen van star
+        for (let s of this.star) {
+            if (this.checkCollision(this.fishey.getRectangle(),s.getRectangle())) {
+                this.score ++
+                this.scoreElement.innerHTML = "" + this.score;
+                s.dead();
+            }
+            s.update();
+        }
+    
         //Pushen van octopusbottom
         for (let b of this.octopusbottom) {
             let hit = this.checkCollision(this.fishey.getRectangle(),b.getRectangle())
@@ -56,6 +71,12 @@ class PlayScreen {
                 this.game.showGameOver(new GameOver(this.game));
             }
             t.update();
+        }
+
+        //Score gelijk aan 10? -> screen wordt leeggemaakt en gamewon scherm wordt getoond
+        if(this.score == 2) {
+            this.game.emptyScreen();
+            this.game.showGameWon(new GameWon(this.game));
         }
 
         this.fishey.update()

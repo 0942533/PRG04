@@ -20,4 +20,8 @@ class GameObject {
     public getRectangle() {
         return this.div.getBoundingClientRect();
     }
+
+    public dead() {
+        this.div.remove();
+    }
 }
