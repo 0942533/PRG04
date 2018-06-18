@@ -58,7 +58,7 @@ Bij encapsulation(inkapseling) zet je de properties en functies op public, priva
 Wanneer is het handig om welke te gebruiken? <br />
 Public: Als je wilt dat variabelen niet alleen vanuit het object zelf kunnen worden aangepast maar ook op andere plaatsen <br />
 Private: Als je wilt dat variabelen alleen vanuit het object zelf kunnen worden aangepast <br />
-Protected: Als je wilt dat de "children" de variabelen kunnen aanpassen en de rest niet. Dit gebruik je bijvoorbeeld bij Inheritance
+Protected: Als je wilt dat de "children" de variabelen kunnen aanpassen en de rest niet. Dit gebruik je bijvoorbeeld bij inheritance.  <br />
 Voorbeeld encapsulation:
 ```
 /// <reference path="../gamescreen/gameobject.ts"/>
