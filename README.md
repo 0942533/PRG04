@@ -1,7 +1,7 @@
 # Fishey
 Game for PRG04
 
-- Verzamel 10 sterren en win de game! Kijk uit voor de octopusarmen anders is het game over.
+- Verzamel 10 sterren en win de game! Kijk uit voor de octopusarmen anders is het game over
 - Het spel is te besturen met behulp van de pijltjestoets naar boven
 
 ---
