@@ -88,11 +88,59 @@ class OctopusBottom extends GameObject {
 }
 ```
 - [x] Composition <br />
+Dit kun je mooi terug zien in onderstaand klassendiagram. Op de plekken waar er een ruitje is getekend, wordt gebruik gemaakt van composition. Zo wordt er bijvoorbeeld gebruik gemaakt van composition in game.ts. Hier roep ik startscreen, playscreen, gameover en gamewon op. Deze komen allemaal uit aparte classen. 
+
 ```
-voorbeeld code
+class Game {
+    private screen: any;
+
+    constructor() {
+        //Open het startscherm wanneer de pagina wordt geladen
+        this.screen = new StartScreen(this)
+        //Laat de game loopen
+        this.gameLoop()
+    }
+
+    //Update het gamescherm in de gameloop
+    private gameLoop():void {
+        this.screen.update()
+        requestAnimationFrame(() => this.gameLoop())
+    }
+
+    //Verwijder de elementen uit de voorgrond
+    public emptyScreen() {
+        let y = document.getElementsByTagName("foreground")[0]
+        y.innerHTML = ""
+    }
+
+    //Laat het starscherm zien
+    public showStartScreen(screen: StartScreen) {
+        this.screen = screen
+        this.screen.update()
+    }
+
+    //Laat het speelscherm zien
+    public showPlayScreen(screen: PlayScreen) {
+        this.screen = screen
+        this.screen.update()
+    }
+
+    //Laat het gameover scherm zien
+    public showGameOver (screen: GameOver) {
+        this.screen = screen
+        this.screen.update()
+    }
+    //Laat het gamewon scherm zien
+    public showGameWon (screen: GameWon) {
+        this.screen = screen
+        this.screen.update()
+    }
+}
 ```
 - [x] Inheritance <br />
-Het voordeel van inheritance(overerving) is dat je bepaalde stukjes code kunt overerven, zodat code niet dubbel hoeft te worden gebruikt. Hierdoor blijft de code overzichtelijker. In mijn game heb ik inhertitance toegepast op de volgende onderdelen: Fishey.ts, BackgroundGame.ts, OctopusTop.ts en Star.ts. Zij erven de x, y en div properties van GameObject.ts ook erven zij de update, getrectangle en dead functies.
+Het voordeel van inheritance(overerving) is dat je bepaalde stukjes code kunt overerven, zodat code niet dubbel hoeft te worden gebruikt. Hierdoor blijft de code overzichtelijker. In mijn game heb ik inhertitance toegepast op de volgende onderdelen: Fishey.ts, BackgroundGame.ts, OctopusTop.ts en Star.ts. Zij erven de x, y en div properties van GameObject.ts ook erven zij de update, getrectangle en dead functies. <br />
+
+gameobject.ts
 ```
 class GameObject {
     protected x: number
@@ -148,8 +196,10 @@ class GameObject {
         this.div.remove();
     }
 }
----
----
+````
+
+octopusbottom.ts <br />
+````
 /// <reference path="../gamescreen/gameobject.ts"/>
 
 class OctopusBottom extends GameObject {
@@ -175,6 +225,7 @@ class OctopusBottom extends GameObject {
         this.x = this.x = this.div.getBoundingClientRect().width * -1;
     }
 }
+````
 ---
 
 ### Klassendiagram
