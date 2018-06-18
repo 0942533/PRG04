@@ -226,8 +226,9 @@ class OctopusBottom extends GameObject {
     }
 }
 ````
-<img src="inleveropdracht/klassendiagram-color.png">
 Het had netter geweest als ik voor de volgende onderdelen die gekleurd zijn ook inheritance had gebruikt. Door gebrek aan tijd ben ik hier helaas niet meer aan toegekomen.
+<img src="inleveropdracht/klassendiagram-color.png">
+
 
 ---
 
