@@ -262,14 +262,6 @@ var GameWon = (function () {
     };
     return GameWon;
 }());
-var GenerateOctopus = (function () {
-    function GenerateOctopus() {
-    }
-    GenerateOctopus.prototype.update = function () {
-        console.log("yaaayy");
-    };
-    return GenerateOctopus;
-}());
 var PlayScreen = (function () {
     function PlayScreen(g) {
         this.score = 0;
