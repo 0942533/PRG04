@@ -4,13 +4,19 @@ Game for PRG04
 - Verzamel 10 sterren en win de game! Kijk uit voor de octopusarmen anders is het game over.
 - Het spel is te besturen met behulp van de pijltjestoets naar boven
 
+---
+
 ### Speelbare game
 https://stud.hosted.hr.nl/0942533/PRG04/docs/
+
+---
 
 ### Installatie
 1. Clone de respository
 2. Run het project via localhost
 3. En spelen/kijken maar!
+
+---
 
 ### Checklist
 - [x] De game heeft een startscherm
@@ -22,8 +28,10 @@ https://stud.hosted.hr.nl/0942533/PRG04/docs/
 
 - [x] De game bevat geen bugs (voor zover ik weet)
 
+---
+
 ### Toelichting OOP
-- [x] Classes
+- [x] Classes <br />
 Voor de elementen die ik op het scherm toon(fishey, bubbles, star etc.) heb ik classes gebruikt, zodat het overzichtelijk blijft. Een ander voordeel van classes is dat ze hergebruikt kunnen worden.
 ```
 /// <reference path="../gamescreen/gameobject.ts"/>
@@ -45,30 +53,145 @@ class Bubble extends GameObject {
     }
 }
 ```
-- [x] Encapsulation
+- [x] Encapsulation <br />
+Bij encapsulation(inkapseling) zet je de properties en functies op public, private of protected. Hierdoor wordt het veiliger. 
+Wanneer is het handig om welke te gebruiken? <br />
+Public: Als je wilt dat variabelen niet alleen vanuit het object zelf kunnen worden aangepast maar ook op andere plaatsen <br />
+Private: Als je wilt dat variabelen alleen vanuit het object zelf kunnen worden aangepast <br />
+Protected: Als je wilt dat de "children" de variabelen kunnen aanpassen en de rest niet. Dit gebruik je bijvoorbeeld bij Inheritance
+Voorbeeld encapsulation:
+```
+/// <reference path="../gamescreen/gameobject.ts"/>
+
+class OctopusBottom extends GameObject {
+    private speedX: number;
+
+    constructor() {
+        super("octopusbottom", 1500,500);
+
+        //De snelheid waarmee octopusbottom naar links verplaatst
+        this.speedX = -8
+    }
+    public update():void {
+        this.x += this.speedX;
+
+        //scherm groter dan breedte scherm? -> startleft functie uitvoeren
+        if (this.x > window.innerWidth) {
+            this.startLeft();
+        }
+        this.div.style.left = `${this.x}px`;
+        this.div.style.top = `${this.y}px`;
+    }
+    private startLeft() {
+        this.x = this.x = this.div.getBoundingClientRect().width * -1;
+    }
+}
+```
+- [x] Composition <br />
 ```
 voorbeeld code
 ```
-- [x] Composition
+- [x] Inheritance <br />
+Het voordeel van inheritance(overerving) is dat je bepaalde stukjes code kunt overerven, zodat code niet dubbel hoeft te worden gebruikt. Hierdoor blijft de code overzichtelijker. In mijn game heb ik inhertitance toegepast op de volgende onderdelen: Fishey.ts, BackgroundGame.ts, OctopusTop.ts en Star.ts. Zij erven de x, y en div properties van GameObject.ts ook erven zij de update, getrectangle en dead functies.
 ```
-voorbeeld code
-```
-- [x] Inheritance
-```
-voorbeeld code
-```
+class GameObject {
+    protected x: number
+    protected y: number
+    protected div: HTMLElement
+
+    constructor(type:string, x:number, y:number) {
+        this.x = x
+        this.y = y
+
+        //Er wordt een div aangemaakt en deze wordt in de foreground geplaatst
+        let z = document.getElementsByTagName("foreground")[0]
+        this.div = document.createElement(type)
+        z.appendChild(this.div)
+    }
+
+    public update():void {
+        this.div.style.transform = `translate(${this.x}px, ${this.y}px`
+    }
+
+    public getRectangle() {
+        return this.div.getBoundingClientRect();
+    }
+
+    public dead() {
+        this.div.remove();
+    }
+}
+class GameObject {
+    protected x: number
+    protected y: number
+    protected div: HTMLElement
+
+    constructor(type:string, x:number, y:number) {
+        this.x = x
+        this.y = y
+
+        //Er wordt een div aangemaakt en deze wordt in de foreground geplaatst
+        let z = document.getElementsByTagName("foreground")[0]
+        this.div = document.createElement(type)
+        z.appendChild(this.div)
+    }
+
+    public update():void {
+        this.div.style.transform = `translate(${this.x}px, ${this.y}px`
+    }
+
+    public getRectangle() {
+        return this.div.getBoundingClientRect();
+    }
+
+    public dead() {
+        this.div.remove();
+    }
+}
+---
+---
+/// <reference path="../gamescreen/gameobject.ts"/>
+
+class OctopusBottom extends GameObject {
+    private speedX: number;
+
+    constructor() {
+        super("octopusbottom", 1500,500);
+
+        //De snelheid waarmee octopusbottom naar links verplaatst
+        this.speedX = -8
+    }
+    public update():void {
+        this.x += this.speedX;
+
+        //scherm groter dan breedte scherm? -> startleft functie uitvoeren
+        if (this.x > window.innerWidth) {
+            this.startLeft();
+        }
+        this.div.style.left = `${this.x}px`;
+        this.div.style.top = `${this.y}px`;
+    }
+    private startLeft() {
+        this.x = this.x = this.div.getBoundingClientRect().width * -1;
+    }
+}
+---
 
 ### Klassendiagram
 <img src="inleveropdracht/klassendiagram.png">
 
+---
+
 ### Peer review
 In week 6 heb ik op de game van Alara feedback gegeven: https://github.com/AlaraEdda/CMTTHE01-4-GAME/issues/1
 
+---
+
 ### Extra uitdaging
 Ik heb de volgende extra uitdagingen in mijn game verwerkt:
-- [x] De game ziet er zeer verzorgd uit dankzij goed uitgewerkt UI design en artwork
-<img src="inleveropdracht/design.png">
+- [x] De game ziet er zeer verzorgd uit dankzij goed uitgewerkt UI design en artwork <br />
 Het hele ontwerp van de game heb ik zelf getekend met behulp van Photoshop
+<img src="inleveropdracht/design.png"> <br />
 
 - [x] De game gebruikt een externe library uit de lijst in deze modulewijzer
 Voor de game heb ik de Howler library gebruikt voor het afspelen van muziek
