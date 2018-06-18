@@ -1,8 +1,8 @@
 # Fishey
-Game for PRG04
+Game for PRG04.
 
-- Verzamel 10 sterren en win de game! Kijk uit voor de octopusarmen anders is het game over
-- Het spel is te besturen met behulp van de pijltjestoets naar boven
+- Verzamel 10 sterren en win de game! Kijk uit voor de octopusarmen anders is het game over...
+- Het spel is te besturen met behulp van de pijltjestoets naar boven.
 
 ---
 
@@ -12,8 +12,8 @@ https://stud.hosted.hr.nl/0942533/PRG04/docs/
 ---
 
 ### Installatie
-1. Clone de respository
-2. Run het project via localhost
+1. Clone de respository.
+2. Run het project via localhost.
 3. En spelen/kijken maar!
 
 ---
@@ -140,6 +140,9 @@ class Game {
 - [x] Inheritance <br />
 Het voordeel van inheritance(overerving) is dat je bepaalde stukjes code kunt overerven, zodat code niet dubbel hoeft te worden gebruikt. Hierdoor blijft de code overzichtelijk. In mijn game heb ik inhertitance toegepast op de volgende onderdelen: Fishey.ts, BackgroundGame.ts, OctopusTop.ts en Star.ts. Zij erven de x, y en div properties van GameObject.ts ook erven zij de update, getrectangle en dead functies. <br />
 
+<img src="inleveropdracht/klassendiagram-color.png">
+Het had netter geweest als ik voor de volgende onderdelen die gekleurd zijn ook inheritance had gebruikt. Door gebrek aan tijd ben ik hier helaas niet meer aan toegekomen.
+
 gameobject.ts
 ```
 class GameObject {
@@ -240,9 +243,9 @@ In week 6 heb ik op de game van Alara feedback gegeven: https://github.com/Alara
 
 ### Extra uitdaging
 Ik heb de volgende extra uitdagingen in mijn game verwerkt:
-- [x] De game ziet er zeer verzorgd uit dankzij goed uitgewerkt UI design en artwork <br />
-Het hele ontwerp van de game heb ik zelf getekend met behulp van Photoshop
+- [x] De game ziet er zeer verzorgd uit dankzij goed uitgewerkt UI design en artwork. <br />
+Het hele ontwerp van de game heb ik zelf getekend met behulp van Photoshop.
 <img src="inleveropdracht/design.png"> <br />
 
-- [x] De game gebruikt een externe library uit de lijst in deze modulewijzer
-Voor de game heb ik de Howler library gebruikt voor het afspelen van muziek
+- [x] De game gebruikt een externe library uit de lijst in deze modulewijzer.
+Voor de game heb ik de Howler library gebruikt voor het afspelen van muziek.
