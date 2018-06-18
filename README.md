@@ -140,9 +140,6 @@ class Game {
 - [x] Inheritance <br />
 Het voordeel van inheritance(overerving) is dat je bepaalde stukjes code kunt overerven, zodat code niet dubbel hoeft te worden gebruikt. Hierdoor blijft de code overzichtelijk. In mijn game heb ik inheritance toegepast op de volgende onderdelen: Fishey.ts, BackgroundGame.ts, OctopusTop.ts en Star.ts. Zij erven de x, y en div properties van GameObject.ts ook erven zij de update, getrectangle en dead functies. <br />
 
-<img src="inleveropdracht/klassendiagram-color.png">
-Het had netter geweest als ik voor de volgende onderdelen die gekleurd zijn ook inheritance had gebruikt. Door gebrek aan tijd ben ik hier helaas niet meer aan toegekomen.
-
 gameobject.ts
 ```
 class GameObject {
@@ -229,6 +226,9 @@ class OctopusBottom extends GameObject {
     }
 }
 ````
+<img src="inleveropdracht/klassendiagram-color.png">
+Het had netter geweest als ik voor de volgende onderdelen die gekleurd zijn ook inheritance had gebruikt. Door gebrek aan tijd ben ik hier helaas niet meer aan toegekomen.
+
 ---
 
 ### Klassendiagram
