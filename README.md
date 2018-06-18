@@ -31,7 +31,7 @@ https://stud.hosted.hr.nl/0942533/PRG04/docs/
 ---
 
 ### Toelichting OOP
-#### - [x] Classes <br />
+- [x] Classes <br />
 Voor de elementen die ik op het scherm toon(fishey, bubbles, star etc.) heb ik classes gebruikt, zodat het overzichtelijk blijft. Een ander voordeel van classes is dat ze hergebruikt kunnen worden.
 ```
 /// <reference path="../gamescreen/gameobject.ts"/>
