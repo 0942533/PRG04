@@ -1,8 +1,16 @@
 # Fishey
 Game for PRG04
 
+- Verzamel 10 sterren en win de game! Kijk uit voor de octopusarmen anders is het game over.
+- Het spel is te besturen met behulp van de pijltjestoets naar boven
+
 ### Speelbare game
 https://stud.hosted.hr.nl/0942533/PRG04/docs/
+
+### Installatie
+1. Clone de respository
+2. Run het project via localhost
+3. En spelen/kijken maar!
 
 ### Checklist
 - [x] De game heeft een startscherm
@@ -16,8 +24,26 @@ https://stud.hosted.hr.nl/0942533/PRG04/docs/
 
 ### Toelichting OOP
 - [x] Classes
+Voor de elementen die ik op het scherm toon(fishey, bubbles, star etc.) heb ik classes gebruikt, zodat het overzichtelijk blijft. Een ander voordeel van classes is dat ze hergebruikt kunnen worden.
 ```
-voorbeeld code
+/// <reference path="../gamescreen/gameobject.ts"/>
+
+class Bubble extends GameObject {
+    constructor() {
+        super("bubble",Math.floor(Math.random()*window.innerWidth),Math.floor(Math.random()*window.innerHeight))
+    }
+
+    public update():void {
+         // Elke keer wordt er 1 vanaf gehaald. (Bubbles gaan omhoog)
+         this.y --
+         this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
+ 
+         // als y kleiner is dan -100, dan veranderd de y in 800
+         if (this.y < -100){
+             this.y = 800
+         }
+    }
+}
 ```
 - [x] Encapsulation
 ```
