@@ -45,19 +45,25 @@ logo {
     top:20%;
     left:35%;
 }
-startbutton {
+startbutton, againbutton {
     position: fixed;
     background-color:#0086cf;
     border: 3px solid white;
     border-radius:6px;
-    width: 20%;
     color: white;
+    width: 20%;
+    cursor: pointer;
     text-align: center;
-    padding: 10px;
-    top: 40%;
     left: 35%;
     margin: 5%;
-    cursor: pointer;
+    padding: 10px;  
+
+}
+startbutton {
+    top: 40%;
+}
+againbutton {
+    top: 45%;
 }
 bubble{
     background-image: url(../img/bubble.png);
@@ -98,7 +104,7 @@ fishey {
     display: block;
     background-image: url(../img/fishey.png);
     background-repeat: no-repeat;
-    width: 110px; height: 95px;
+    width: 100px; height: 85px;
     background-size:contain;
     z-index: 6;
 }
@@ -135,20 +141,6 @@ gameover {
     animation: fishanimation 3s ease-in-out infinite alternate;
     z-index: 4;
 }
-againbutton {
-    position: fixed;
-    background-color:#0086cf;
-    border: 3px solid white;
-    border-radius:6px;
-    color: white;
-    width: 20%;
-    cursor: pointer;
-    text-align: center;
-    top: 45%;
-    left: 35%;
-    margin: 5%;
-    padding: 10px;  
-}
 gamewon {
     position: absolute;
     background-image:url(../img/game-won.png);
@@ -161,21 +153,6 @@ gamewon {
     animation: fishanimation 3s ease-in-out infinite alternate;
     z-index: 4;
 }
-againbutton {
-    position: fixed;
-    background-color:#0086cf;
-    border: 3px solid white;
-    border-radius:6px;
-    width: 20%;
-    top: 45%;
-    left: 35%;
-    color: white;
-    text-align: center;
-    margin: 5%;
-    padding: 10px;
-    cursor: pointer;
-}
-
 startsong {
     position: absolute;
     display: block;

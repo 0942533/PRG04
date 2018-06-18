@@ -19,7 +19,7 @@ class GameOver {
         c.innerHTML = "GAME OVER! TRY AGAIN";
     }
 
-    public update() {
+    public update():void {
         for (const b of this.bubbles) {
             b.update()
         }
