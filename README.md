@@ -248,5 +248,5 @@ Ik heb de volgende extra uitdagingen in mijn game verwerkt:
 Het hele ontwerp van de game heb ik zelf getekend met behulp van Photoshop.
 <img src="inleveropdracht/design.png"> <br />
 
-- [x] De game gebruikt een externe library uit de lijst in deze modulewijzer. <br />
+- [x] De game gebruikt een externe library uit de lijst die te vinden is in de modulewijzer. <br />
 Voor de game heb ik de Howler library gebruikt voor het afspelen van muziek.
