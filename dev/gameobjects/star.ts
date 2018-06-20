@@ -7,7 +7,8 @@ class Star extends GameObject {
         super("star", 1500, Math.random() * window.innerHeight)
 
          //De snelheid waarmee star naar links verplaatst
-        this.speedX = -8;
+        this.speedX = -8
+        this.x = window.innerWidth
     }
 
     public update() {
@@ -17,11 +18,7 @@ class Star extends GameObject {
             this.startLeft()
             this.dead()
         }
-        if (this.x > window.innerWidth) {
-            this.startLeft()
-        }
-        this.div.style.left = `${this.x}px`;
-        this.div.style.top = `${this.y}px`;
+        super.update()
     }
 
     private startLeft() {

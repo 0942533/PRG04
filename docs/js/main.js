@@ -73,7 +73,7 @@ var Bubble = (function (_super) {
 var Fishey = (function (_super) {
     __extends(Fishey, _super);
     function Fishey() {
-        var _this = _super.call(this, "fishey", 450, 450) || this;
+        var _this = _super.call(this, "fishey", 300, 450) || this;
         _this.upspeed = 0;
         _this.upkey = 38;
         window.addEventListener("keydown", function (e) { return _this.onKeyDown(e); });
@@ -108,18 +108,12 @@ var OctopusBottom = (function (_super) {
     function OctopusBottom() {
         var _this = _super.call(this, "octopusbottom", 1500, 500) || this;
         _this.speedX = -8;
+        _this.x = window.innerWidth;
         return _this;
     }
     OctopusBottom.prototype.update = function () {
         this.x += this.speedX;
-        if (this.x > window.innerWidth) {
-            this.startLeft();
-        }
-        this.div.style.left = this.x + "px";
-        this.div.style.top = this.y + "px";
-    };
-    OctopusBottom.prototype.startLeft = function () {
-        this.x = this.x = this.div.getBoundingClientRect().width * -1;
+        _super.prototype.update.call(this);
     };
     return OctopusBottom;
 }(GameObject));
@@ -128,18 +122,12 @@ var OctopusTop = (function (_super) {
     function OctopusTop() {
         var _this = _super.call(this, "octopustop", 1500, 40) || this;
         _this.speedX = -8;
+        _this.x = window.innerWidth;
         return _this;
     }
     OctopusTop.prototype.update = function () {
         this.x += this.speedX;
-        if (this.x > window.innerWidth) {
-            this.startLeft();
-        }
-        this.div.style.left = this.x + "px";
-        this.div.style.top = this.y + "px";
-    };
-    OctopusTop.prototype.startLeft = function () {
-        this.x = this.x = this.div.getBoundingClientRect().width * -1;
+        _super.prototype.update.call(this);
     };
     return OctopusTop;
 }(GameObject));
@@ -148,6 +136,7 @@ var Star = (function (_super) {
     function Star() {
         var _this = _super.call(this, "star", 1500, Math.random() * window.innerHeight) || this;
         _this.speedX = -8;
+        _this.x = window.innerWidth;
         return _this;
     }
     Star.prototype.update = function () {
@@ -156,11 +145,7 @@ var Star = (function (_super) {
             this.startLeft();
             this.dead();
         }
-        if (this.x > window.innerWidth) {
-            this.startLeft();
-        }
-        this.div.style.left = this.x + "px";
-        this.div.style.top = this.y + "px";
+        _super.prototype.update.call(this);
     };
     Star.prototype.startLeft = function () {
         this.x = this.x = this.div.getBoundingClientRect().width * -1;

@@ -5,7 +5,7 @@ class Fishey extends GameObject{
     private upspeed: number = 0
 
     constructor() {
-        super("fishey", 450, 450)
+        super("fishey", 300, 450)
 
         //upkey wordt gelijk gesteld aan pijltjes toets ^
         this.upkey = 38
