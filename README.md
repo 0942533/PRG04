@@ -7,7 +7,7 @@ Game for PRG04.
 ---
 
 ### Speelbare game
-http://projectlotte.me/PRG04/
+https://stud.hosted.hr.nl/0942533/PRG04/docs/
 
 ---
 
